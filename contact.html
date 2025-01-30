@@ -1,0 +1,169 @@
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title> All Prpducts Fashion </title>
+        <link rel="stylesheet" href="style.css">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    </head>
+    <body>
+        <div class="body">
+        <div class="container">
+        <div class="navbar">
+            <div class="logo">
+                <img src="images/logo.png" width="125px ">
+            </div>
+            <nav>
+                <ul id="MenuItem">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="product.html">Products</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                    <li><a href="account.html">Account</a></li>
+
+                </ul>
+            </nav>
+            <a href="cart.html"><img src="images/cart.png" width="30px" height="30px"></a>
+            <img src="images/menu.png" width="30px" height="30px"  class="menu-icon" onclick="menutoggle()">
+        </div>
+    </div>
+    <div class="contact">
+        <img src="images/map.jpg">
+    <div class="container">
+        <div class="flip-card" id="flip-card-btn" onclick="toggleFlip()">Animate</div>
+        <div class="contact-wrapper">
+            <div class="envelope" id="envelope">
+              <div class="back paper"></div>
+              <div class="content">
+                <div class="form-wrapper">
+                  <form>
+                    <div class="top-wrapper">
+                      <div class="input">
+                        <label>Name</label>
+                        <input type="text" name="name"/>
+                      </div>
+                      <div class="input">
+                        <label>Phone</label>
+                        <input type="text" name="phone"/>
+                      </div>
+                      <div class="input">
+                        <label>Email</label>
+                        <input type="email" name="email"/>
+                      </div>
+                    </div>
+                    <div class="bottom-wrapper">
+                      <div class="input">
+                        <label>Subject</label>
+                        <input type="text" name="subject"/>
+                      </div>
+                      <div class="input">
+                        <label>Message</label>
+                        <textarea rows="5" name="message"></textarea>
+                      </div>
+                      <div class="submit">
+                        <button type="submit" class="submit-card">Send Mail</button>
+                      </div>
+                    </div>
+                  </form>
+                </div>
+              </div>
+              <div class="front paper"></div>
+            </div>
+          </div>
+        </div>
+    </div>
+
+                
+    <script>
+        var MenuItem = document.getElementById("MenuItems");
+        MenuItem.style.maxHeight = "0px";
+        function menutoggle(){
+            if( MenuItem.style.maxHeight == "0px")
+            {
+                MenuItem.style.maxHeight = "200px";
+    
+            }
+            else{
+                MenuItem.style.maxHeight = "0px";
+     
+            }
+            
+        }
+<!---contact----!>
+
+        $(function() {
+
+var link = $('#navbar a.dot');
+
+// Move to specific section when click on menu link
+link.on('click', function(e) {
+var target = $($(this).attr('href'));
+$('html, body').animate({
+scrollTop: target.offset().top
+}, 600);
+$(this).addClass('active');
+e.preventDefault();
+});
+
+// Run the scrNav when scroll
+$(window).on('scroll', function(){
+scrNav();
+});
+
+// scrNav function
+// Change active dot according to the active section in the window
+function scrNav() {
+var sTop = $(window).scrollTop();
+$('section').each(function() {
+var id = $(this).attr('id'),
+    offset = $(this).offset().top-1,
+    height = $(this).height();
+if(sTop >= offset && sTop < offset + height) {
+  link.removeClass('active');
+  $('#navbar').find('[data-scroll="' + id + '"]').addClass('active');
+}
+});
+}
+scrNav();
+});
+
+
+
+
+const counters = document.querySelectorAll(".counter");
+
+counters.forEach((counter) => {
+  counter.innerText = "0";
+  const updateCounter = () => {
+    const target = +counter.getAttribute("data-target");
+    const count = +counter.innerText;
+    const increment = target / 200;
+
+    if (count < target) {
+      counter.innerText = `${Math.ceil(count + increment)}`;
+      setTimeout(updateCounter, 20); // Increased delay to 50ms for smoother animation
+    } else {
+      counter.innerText = target;
+    }
+  };
+  updateCounter();
+});
+
+
+function toggleFlip() {
+  const envelope = document.getElementById('envelope');
+  const flipCardBtn = document.getElementById('flip-card-btn');
+ 
+  // Toggle the 'active' class to the envelope for animation
+  envelope.classList.toggle('active');
+ 
+  // Change the text of the flip button based on the active state
+  flipCardBtn.innerText = envelope.classList.contains('active') ? 'Reset' : 'Submit';
+}
+
+
+
+    </script>
+        </body>
+    </html>
+
